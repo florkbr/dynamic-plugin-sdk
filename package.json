@@ -5,12 +5,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach run build",
+    "build": "yarn build-libs && yarn build-samples",
     "build-libs": "yarn workspaces foreach --from '@openshift/*' run build",
     "build-samples": "yarn workspaces foreach --from '@monorepo/sample-*' run build",
     "run-samples": "yarn workspaces foreach -pvi --from '@monorepo/sample-*' run http-server",
     "lint": "yarn eslint packages",
-    "test": "jest --collectCoverage --logHeapUsage -w 1",
+    "test": "jest --logHeapUsage -w 1",
     "test-print-config": "jest --showConfig",
     "test-e2e": "yarn workspace @monorepo/e2e-sample-app run test-e2e",
     "test-e2e-open": "yarn workspace @monorepo/e2e-sample-app run test-e2e-open",
@@ -53,6 +53,7 @@
     "@types/react-router": "^5.1.17",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-virtualized": "^9.21.21",
+    "@types/semver": "^7.3.10",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",

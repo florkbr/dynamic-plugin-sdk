@@ -1,7 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
-print_error() { printf "%s\n" "$*" >&2; }
+# Setup environment
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Print system information
 echo "node $(node -v)"
@@ -19,9 +20,6 @@ yarn lint
 
 # Run unit tests
 yarn test
-
-# Run end-to-end tests
-# TODO
 
 # Upload code coverage
 ./prow-codecov.sh 2>/dev/null
